@@ -1,6 +1,7 @@
 package com.jefferson.university.config;
 
 import com.jefferson.university.enums.ResearchHotbed;
+import com.jefferson.university.model.Builder;
 import com.jefferson.university.model.Student;
 import com.jefferson.university.respository.StudentRepository;
 import jakarta.annotation.PostConstruct;
@@ -15,14 +16,28 @@ public class DataSetup {
     @Autowired
     private StudentRepository studentRepository;
 
+//    @PostConstruct
+//    public void setupData() {
+//        Student student = new Student.Builder()
+//                .name("Mathew")
+//                .lastName("Echeverry")
+//                .email("mathew.echeverry@gmail.com")
+//                .hasResearchHotbed(true, ResearchHotbed.SCIENCE_DATA)
+//                .stratum(5, 10000000)
+//                .hasDisability(false, null)
+//                .city("CALI")
+//                .build();
+//        this.studentRepository.saveAll(Arrays.asList(student));
+//    }
+    
     @PostConstruct
     public void setupData() {
-        Student student = new Student.Builder()
+        Student student = new Builder()
                 .name("Mathew")
                 .lastName("Echeverry")
                 .email("mathew.echeverry@gmail.com")
                 .hasResearchHotbed(true, ResearchHotbed.SCIENCE_DATA)
-                .stratum(5, 10000000)
+                .stratum(5, 19990000)
                 .hasDisability(false, null)
                 .city("CALI")
                 .build();

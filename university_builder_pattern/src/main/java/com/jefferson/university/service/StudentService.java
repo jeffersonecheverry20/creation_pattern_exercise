@@ -1,6 +1,7 @@
 package com.jefferson.university.service;
 
 import com.jefferson.university.DTO.StudentDTO;
+import com.jefferson.university.model.Builder;
 import com.jefferson.university.model.Student;
 import com.jefferson.university.respository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -37,21 +38,21 @@ public class StudentService {
     }
 
     public StudentDTO createStudent(final StudentDTO studentToCreate) {
-        Student.Builder student = new Student.Builder()
+        Builder builderStudent = new Builder()
                 .name(studentToCreate.getName())
                 .lastName(studentToCreate.getLastName())
                 .email(studentToCreate.getEmail())
-                .hasResearchHotbed(studentToCreate.isHasResearchHotbed(), studentToCreate.getResearchHotbed())
+                //.hasResearchHotbed(studentToCreate.isHasResearchHotbed(), studentToCreate.getResearchHotbed())
                 .stratum(studentToCreate.getStratum(),studentToCreate.getEnrollmentFee())
                 .hasDisability(studentToCreate.isHasDisability(), studentToCreate.getDisability())
                 .city(studentToCreate.getCity());
-        this.studentRepository.save(student.build());
+        this.studentRepository.save(builderStudent.build());
 
         return studentToCreate;
     }
 
     public StudentDTO updateStudent(final StudentDTO studentToUpdate) {
-        Student.Builder student = new Student.Builder()
+        Builder builderStudent = new Builder()
                 .name(studentToUpdate.getName())
                 .lastName(studentToUpdate.getLastName())
                 .email(studentToUpdate.getEmail())
@@ -59,7 +60,7 @@ public class StudentService {
                 .stratum(studentToUpdate.getStratum(),studentToUpdate.getEnrollmentFee())
                 .hasDisability(studentToUpdate.isHasDisability(), studentToUpdate.getDisability())
                 .city(studentToUpdate.getCity());
-        this.studentRepository.save(student.build());
+        this.studentRepository.save(builderStudent.build());
 
         return studentToUpdate;
     }
