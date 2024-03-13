@@ -1,11 +1,17 @@
 package com.jefferson.university.factory;
 
-import com.jefferson.university.DTO.StudentDTO;
+import org.springframework.stereotype.Component;
 
-public class ForeignStudent implements Student {
+import com.jefferson.university.DTO.StudentDTO;
+import com.jefferson.university.model.Student;
+
+@Component
+public class ForeignStudent implements IStudent {
+	
+	
     @Override
-    public com.jefferson.university.model.Student createStudent(final StudentDTO studentDTO) {
-        com.jefferson.university.model.Student student = new com.jefferson.university.model.Student();
+    public Student createStudent(final StudentDTO studentDTO) {
+        Student student = new Student();
         String name = studentDTO.getName();
         student.setName(name);
         student.setLastName(studentDTO.getLastName());

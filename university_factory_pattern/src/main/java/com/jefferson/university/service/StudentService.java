@@ -44,9 +44,9 @@ public class StudentService {
     public StudentDTO createStudent(final StudentDTO studentToCreate) {
         Student student;
         if (studentToCreate.getCity().equalsIgnoreCase("INTERNATIONAL")) {
-            student = this.studentFactory.create(TypeStudent.FOREIGN_STUDENT).createStudent(studentToCreate);
+            student = this.studentFactory.create(TypeStudent.FOREIGN_STUDENT, studentToCreate);
         } else {
-            student = this.studentFactory.create(TypeStudent.LOCAL_STUDENT).createStudent(studentToCreate);
+            student = this.studentFactory.create(TypeStudent.LOCAL_STUDENT, studentToCreate);
         }
         this.studentRepository.save(student);
 
@@ -56,9 +56,9 @@ public class StudentService {
     public StudentDTO updateStudent(final StudentDTO studentToUpdate) {
         Student student;
         if (studentToUpdate.getCity().equalsIgnoreCase("INTERNATIONAL")) {
-            student = this.studentFactory.create(TypeStudent.FOREIGN_STUDENT).createStudent(studentToUpdate);
+            student = this.studentFactory.create(TypeStudent.FOREIGN_STUDENT, studentToUpdate);
         } else {
-            student = this.studentFactory.create(TypeStudent.LOCAL_STUDENT).createStudent(studentToUpdate);
+            student = this.studentFactory.create(TypeStudent.LOCAL_STUDENT, studentToUpdate);
         }
         this.studentRepository.save(student);
 
