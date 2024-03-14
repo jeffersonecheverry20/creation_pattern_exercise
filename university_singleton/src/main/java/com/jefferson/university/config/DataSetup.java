@@ -1,7 +1,9 @@
 package com.jefferson.university.config;
 
 import com.jefferson.university.enums.ResearchHotbed;
+import com.jefferson.university.model.Admin;
 import com.jefferson.university.model.Student;
+import com.jefferson.university.respository.AdminRepository;
 import com.jefferson.university.respository.StudentRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public class DataSetup {
 
     @Autowired
     private StudentRepository studentRepository;
+    
+    @Autowired AdminRepository adminRepository;
 
     @PostConstruct
     public void setupData() {
@@ -29,5 +33,14 @@ public class DataSetup {
         student.setCity("CALI");
         student.setHasLunch(false);
         this.studentRepository.saveAll(Arrays.asList(student));
+    }
+    
+    @PostConstruct
+    public void setupData2() {
+        Admin admin =  Admin.getInstance();
+        admin.setName("Mathew");
+        admin.setLastName("Echeverry");
+
+        this.adminRepository.saveAll(Arrays.asList(admin));
     }
 }
